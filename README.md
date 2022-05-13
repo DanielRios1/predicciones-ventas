@@ -4,6 +4,7 @@ El dataset contiene valores nulos en dos columnas, "item_weight" y "outlet_size"
 
 Luego de limpiar el dataset de valores nulos y duplicados, se puede comenzar a trabajar. 
 Para empezar, se hacen algunas visualizaciones para entender algunas características del dataset.
+
 ## Visualizaciones
 ![Visualización](nivel-ventas-segun-local.png)
 El tipo de local Supermercado tipo 1 es el que más ventas obtiene, seguido por el Supermercado tipo 3.
@@ -13,9 +14,21 @@ El tipo de local Supermercado tipo 1 supera ampliamente al resto. Se puede concl
 Al comparar productos "Low Fat" vs "Regular, se puede ver que en el catálogo de productos hay más presencia de productos "Low Fat“. Además, estos últimos también tienen mayor visibilidad en las góndolas.
 ![Visualización](ventas-por-categoria.png)
 En el gráfico podemos ver que en los cuatro tipos de locales se mantienen como las categorías con más ventas Frutas y verduras, y Snacks, alternando el primer y segundo lugar. Mientras que en tercer y cuarto lugar, se repiten siempre Productos para la limpieza y mantención del hogar y Alimentos congelados, respectivamente. Finalmente, en quinto lugar aparece Lácteos en casi todos los tipos de locales, salvo en Supermercado tipo 3, donde la categoría es desplazada por Conservas.
+
 ## Modelos
 Para esta última parte, se pasaron a valores numéricos las columnas "item_fat_content“, "outlet_size“, "outlet_location_type“, "outlet_type“ y "item_type“.
 ![Visualización](predicc-knn-1.png)
 Para este modelo no se consideraron las columnas "item_identifier", "outlet_identifier", "outlet_establishment_year“.
 Se separan los datos en 70% para entrenamiento, 15% para testeo y 15% para validación, ya que se realizará optimización. Se obtiene un R2 de 45% y un RMSE de 1222.02. Estos resultados indican que el modelo no tiene mucha utilidad.
+![Visualización](predicc-reg.png)
+Se separan los datos en 70% para entrenamiento y 30% para testeo. Se intenta mejorar el modelo, pero no se obtienen grandes resultados. El R2 sigue siendo cercano al 40%.
+![Visualización](predicc-knn.png)
+Se seleccionaron las columnas "item_mrp", "outlet_type", "outlet_size", "outlet_location_type“ para realizar el modelo, y al disminuir la cantidad de columnas, KNN se comporta de mejor manera, obteniendo un R2 de 62%. Sin embargo, se obtiene un RMSE de 1024.15, lo que es muy grande para los datos que se están manejando. Mirando este resultado, este modelo no puede ser utilizado.
+
+## Conclusiones
+* Los modelos visualizados no logran explicar de buena manera el nivel de ventas para cada producto. 
+* Se entiende que, debido a la influencia del cliente en los resultados de venta, es difícil predecir cuanto venderá cada producto.
+* Se tienen que refinar más los modelos ya propuestos o intentar con modelos nuevos, para poder llegar a resultados más satisfactorios.
+
+
 
